@@ -30,8 +30,14 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install -r requirements.txt
+          pip install request
 
       - name: Run main.py
         # run: python main.py
         run: uvicorn main:app --host 0.0.0.0 --port 8000
+        
+      - name: Run test requests
+        run: |
+          curl http://127.0.0.1:8000/
+          curl -X POST http://127.0.0.1:8000/user -H "Content-Type: application/json" -d '{"id":1,"name":"Juan"}'
