@@ -44,3 +44,10 @@ jobs:
         run: |
           curl http://127.0.0.1:8000/
           curl -X POST http://127.0.0.1:8000/user -H "Content-Type: application/json" -d '{"id":1,"name":"Juan"}'
+
+      - name: Subir logs como artefacto
+        if: always()  # Aún si falló algo, sube los logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-logs
+          path: api.log
