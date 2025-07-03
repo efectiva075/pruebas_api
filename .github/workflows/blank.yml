@@ -33,4 +33,5 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Run main.py
-        run: python main.py
+        # run: python main.py
+        run: uvicorn main:app --host 0.0.0.0 --port 8000
