@@ -17,7 +17,8 @@ app = FastAPI()
 @app.get("/")
 def main():
     return {"mesage":f"Hora actual: {str(datetime.now())}",
-           "clave":os.getenv('clave','no encontro')}
+           "clave":os.getenv('clave','no encontro'),
+           "msj":os.getenv('msj','no hay mensaje')}
 
 @app.post("/user")
 def user(user:User):
