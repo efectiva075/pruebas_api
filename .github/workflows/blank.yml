@@ -34,6 +34,8 @@ jobs:
           pip install requests
 
       - name: Run main.py
+        env:
+          clave: ${{ secrets.CLAVE }}
         # run: python main.py
         run: uvicorn main:app --host 0.0.0.0 --port 8000 & sleep 3
         
